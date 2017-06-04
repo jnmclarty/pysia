@@ -18,23 +18,60 @@ PySia
      :alt: Updates
 
 
-Sia API wrapper for Python 2 & 3
+Sia API bindings for Python 2 & 3.
 
+This library is built using code-generation, to exactly match the endpoints, docs and responses maintained by Sia.  This library will not attempt to improve on, or resist, any API changes made upstream to siad.
 
-* Free software: MIT license
-* Documentation: https://pysia.readthedocs.io.
+This version targets siad >= 1.2.2.
+
+See Also
+--------
+
+There are python 3 bindings for Sia, maintained by humans which might be or become more pythonic. See siapy_.
+
+Install
+-------
+
+pip install pysia
+
+Usage
+-----
+
+```
+
+   from pysia import Sia
+   
+   sia = Sia()
+   
+   sia.
+
+```
 
 
 Features
 --------
 
-* TODO
+* Exposes the endpoints of siad
+* User-friendly Autocomplete.
+* Pure python responses.
+
+License
+-------
+
+* Free software: MIT license
+
+Documentation
+-------------
+
+Coming soon, here:
+
+* Documentation: https://pysia.readthedocs.io.
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
+.. _siapy: https://github.com/lolsteve/siapy
