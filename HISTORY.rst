@@ -2,7 +2,7 @@
 History
 =======
 
-0.1.0 (2017-05-28)
-------------------
+0.1.122.0 (2017-05-28)
+----------------------
 
-* First release on PyPI.
+* First code-gen produced version, targetting python 2 & 3 & siad 1.2.2
