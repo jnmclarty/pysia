@@ -20,7 +20,7 @@ test_requirements = requirements + [
 setup(
     name='pysia',
     version='0.1.0',
-    description="Sia API wrapper for Python 2 & 3",
+    description="Sia bindings for Python 2 & 3",
     long_description=readme + '\n\n' + history,
     author="Jeffrey McLarty",
     author_email='jeffrey.mclarty@gmail.com',
@@ -36,7 +36,7 @@ setup(
     zip_safe=False,
     keywords='pysia',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
