@@ -226,7 +226,10 @@ class Sia(object):
         return self(GET, url, data)
 
     def get_wallet_transactions(self, addr=None, **data):
-        url = '/wallet/transactions/{addr}'.format(addr=addr)
+        if addr:
+            url = '/wallet/transactions/{addr}'.format(addr=addr)
+        else:
+            url = '/wallet/transactions'
         return self(GET, url, data)
 
     def set_wallet_unlock(self, **data):
