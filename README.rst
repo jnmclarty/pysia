@@ -32,28 +32,28 @@ There are python 3 bindings for Sia, maintained by humans which might be or beco
 Install
 -------
 
-pip install pysia
+.. code-block:: console
+
+    pip install pysia
 
 Usage
 -----
 
-```
+.. code-block:: python
 
    from pysia import Sia
    
    sia = Sia()
    
-   sia.
-
-```
+   consensus = sia.get_consensus()
 
 
 Features
 --------
 
-* Exposes the endpoints of siad
-* User-friendly Autocomplete.
-* Pure python responses.
+* Exposes a method for each API endpoint of siad, matching Siad API docs 1-to-1
+* User-friendly autocomplete (GET -> get*ters, POST -> setters)
+* Pure python responses
 
 License
 -------
