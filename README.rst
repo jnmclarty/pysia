@@ -24,11 +24,6 @@ This library is built using code-generation, to exactly match the endpoints, doc
 
 This version targets siad >= 1.2.2.
 
-See Also
---------
-
-There are python 3 bindings for Sia, maintained by humans which might be or become more pythonic. See siapy_.
-
 Install
 -------
 
@@ -66,6 +61,11 @@ Documentation
 Coming soon, here:
 
 * Documentation: https://pysia.readthedocs.io.
+
+See Also
+--------
+
+There are python 3 bindings for Sia, maintained by humans which might be or become more pythonic. See siapy_.
 
 Credits
 -------
