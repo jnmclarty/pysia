@@ -36,19 +36,48 @@ Usage
 
 .. code-block:: python
 
-   from pysia import Sia
+   >>> from pysia import Sia
+   >>> sc = Sia() # Optionally, pass host & port.  Defaults to localhost & 9980
    
-   sia = Sia()
+   >>> consensus = sc.get_consensus()
+   >>> consensus['height']
+   108058
+       
+   backup_made = sc.get_wallet_backup(destination=r'd:\siadwallet.dat')
+   print(backup_made)
+   # True
    
-   consensus = sia.get_consensus()
+   backup_made = sc.get_wallet_backup(destination=r'error causing input?@#$!`')
+   print(backup_made)
+   >>> {'message': 'error when calling /wallet/backup: destination must be an absolute path'}
+
+   print(sc.get_gateway())
+   >>> {'peers': [{'netaddress': '92.253.172.90:9981', 'version': '0.5.2', 'inbound': False, 'local': False},...]}
+
+   >>> print(sc.set_gateway_connect('212.77.177.47:9981'))
+   True
+
+   >>> print(sc.set_gateway_disconnect('212.77.177.47:9981'))
+   True
+    
+   >>> print(sc.set_gateway_disconnect('212.77.177.47:9981'))
+   {'message': 'not connected to that node'}
 
 
 Features
 --------
 
 * Exposes a method for each API endpoint of siad, matching Siad API docs 1-to-1
-* User-friendly autocomplete (GET -> get*ters, POST -> setters)
+* User-friendly autocomplete (GET -> getters, POST -> setters)
 * Pure python responses
+* User-friendly key-words called out for url-parameters GET-methods
+
+Donations
+---------
+
+Sia:
+
+2fd5ada234b5dba82584160213d8c9698d080bc4311277667a1ef38e5265fe7058aeeb627822
 
 License
 -------
