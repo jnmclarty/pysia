@@ -19,7 +19,7 @@ test_requirements = requirements + [
 
 setup(
     name='pysia',
-    version='0.1.0',
+    version='0.1.122.1',
     description="Sia bindings for Python 2 & 3",
     long_description=readme + '\n\n' + history,
     author="Jeffrey McLarty",
