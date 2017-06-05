@@ -1,25 +1,29 @@
 # -*- coding: utf-8 -*-
 
 import requests as r
+from simplejson import JSONDecodeError
 
 GET = 1
 POST = 2
 
 class Sia(object):
-    def __init__(self, host='http://localhost', port='1234'):
+    def __init__(self, host='http://localhost', port='9980'):
         self.host = host
         self.port = port
     @property
     def _url_base(self):
         return self.host + ":" + str(self.port)
     def __call__(self, verb, url, data=None):
+        user_agent = {'User-agent': 'Sia-Agent'}
         full_url = self._url_base + url
         if verb == GET:
-            return r.get(full_url, params=data)
+            resp = r.get(full_url, headers=user_agent, params=data)
         elif verb == POST:
-            out = r.post(full_url, data=data)
-            "TODO: Raise exception for users on bad status code"
-            return out
+            resp = r.post(full_url, headers=user_agent, data=data)
+        try:
+            return resp.json()
+        except JSONDecodeError:
+            return resp.ok
 
     def get_consensus(self, **data):
         url = '/consensus'
@@ -232,4 +236,26 @@ class Sia(object):
 
 if __name__ == '__main__':
     sc = Sia()
-    sc.get_consensus()
+    cs = sc.get_consensus()
+    print(cs['height'])
+    # 108060
+    
+    backup_made = sc.get_wallet_backup(destination=r'd:\siadwallet.dat')
+    print(backup_made)
+    # True
+    
+    backup_made = sc.get_wallet_backup(destination=r'error causing input?@#$!`')
+    print(backup_made)
+    # {'message': 'error when calling /wallet/backup: destination must be an absolute path'}
+
+    print(sc.get_gateway())
+    # {'peers': [{'netaddress': '92.253.172.90:9981', 'version': '0.5.2', 'inbound': False, 'local': False}, {'netaddress': '176.9.43.109:9981', 'version': '1.1.2', 'inbound': False, 'local': False}, {'netaddress': '91.134.136.124:9981', 'version': '1.2.0', 'inbound': False, 'local': False}, {'netaddress': '76.190.165.207:9981', 'version': '1.2.1', 'inbound': False, 'local': False}, {'netaddress': '51.15.58.86:9981', 'version': '1.1.2', 'inbound': False, 'local': False}, {'netaddress': '37.139.15.138:9981', 'version': '1.0.0', 'inbound': False, 'local': False}, {'netaddress': '87.98.189.200:9981', 'version': '1.2.2', 'inbound': False, 'local': False}], 'netaddress': '99.244.212.203:9981'}
+
+    print(sc.set_gateway_connect('212.77.177.47:9981'))
+    # True
+
+    print(sc.set_gateway_disconnect('212.77.177.47:9981'))
+    # True
+    
+    print(sc.set_gateway_disconnect('212.77.177.47:9981'))
+    # {'message': 'not connected to that node'}
